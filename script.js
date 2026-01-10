@@ -5,7 +5,7 @@ const neuralNetworks = [
         version: "4.1",
         icon: "fas fa-brain",
         badge: "premium",
-        description: "Мощная аналитическая нейросеть.",
+        description: "Мощная аналитическая нейросеть нового поколения.",
         features: [
             "128K контекст",
             "Глубокий анализ",
@@ -18,11 +18,11 @@ const neuralNetworks = [
         version: "2.0",
         icon: "fas fa-gem",
         badge: "free",
-        description: "Лёгкая и быстрая модель.",
+        description: "Быстрая и экономичная модель для повседневных задач.",
         features: [
-            "Быстрая",
-            "Экономичная",
-            "40+ языков"
+            "Высокая скорость",
+            "Экономия токенов",
+            "Поддержка 40+ языков"
         ]
     }
 ];
@@ -55,7 +55,7 @@ neuralNetworks.forEach((n, i) => {
                     ${n.features.map(f => `<li>${f}</li>`).join("")}
                 </ul>
 
-                <a href="#" class="install-button">
+                <a href="https://t.me/FernieXBot" target="_blank" class="install-button">
                     <i class="fab fa-telegram"></i> Установить
                 </a>
             </div>
@@ -72,12 +72,3 @@ neuralNetworks.forEach((n, i) => {
 
     grid.appendChild(card);
 });
-
-// particles
-const particles = document.querySelector(".particles");
-for (let i = 0; i < 12; i++) {
-    const p = document.createElement("div");
-    p.className = "particle";
-    p.style.left = Math.random() * 100 + "%";
-    particles.appendChild(p);
-}
