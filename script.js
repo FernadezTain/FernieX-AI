@@ -1,6 +1,6 @@
 const neuralNetworks = [
     {
-        id: "grok",
+        id: "grok41fast",
         title: "Grok",
         version: "4.1 fast",
         icon: "fas fa-brain",
@@ -17,9 +17,9 @@ const neuralNetworks = [
 
     },
     {
-        id: "gemma",
+        id: "gemma3n_4B",
         title: "Gemma",
-        version: "2.0",
+        version: "3n 4B",
         icon: "fas fa-gem",
         badge: "free",
         description: "Быстрая и экономичная модель для повседневных задач.",
