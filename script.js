@@ -33,7 +33,7 @@ const neuralNetworks = [
         id: "ClaudeOpus_45",
         title: "Claude Opus",
         version: "4.5",
-        icon: "fas fa-gem",
+        icon: "fas fa-cloud",
         badge: "free",
         description: "Мощная аналитическая нейросеть.",
         features: [
