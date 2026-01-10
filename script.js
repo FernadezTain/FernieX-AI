@@ -1,182 +1,250 @@
-// Массив с данными о продуктах
-const products = [
+// Массив с данными о нейросетях
+const neuralNetworks = [
     {
-        id: 1,
-        title: "AI Аналитика",
-        icon: "fas fa-chart-line",
-        price: "от 15 000 ₽/мес",
-        description: "Мощная система анализа данных с использованием машинного обучения для прогнозирования трендов и выявления скрытых возможностей.",
+        id: "grok41",
+        title: "Grok",
+        version: "4.1 Fat",
+        icon: "fas fa-brain",
+        badge: "premium",
+        description: "Мощнейшая нейросеть от xAI с расширенным контекстом и улучшенными возможностями анализа данных. Поддерживает сложные логические операции и глубокий анализ текста.",
         features: [
-            "Прогнозное моделирование",
-            "Визуализация данных в реальном времени",
-            "Автоматические отчеты",
-            "Интеграция с популярными CRM"
+            "Контекст: 128K токенов",
+            "Поддержка 50+ языков",
+            "Расширенная математическая логика",
+            "Генерация кода",
+            "Анализ документов и таблиц"
         ]
     },
     {
-        id: 2,
-        title: "AI Ассистент",
+        id: "gemma",
+        title: "Gemma",
+        version: "2.0",
+        icon: "fas fa-gem",
+        badge: "free",
+        description: "Легковесная, но мощная модель от Google, оптимизированная для эффективной работы на различных устройствах с сохранением высокой точности.",
+        features: [
+            "Оптимизирована для мобильных устройств",
+            "Быстрое время ответа",
+            "Поддержка 40+ языков",
+            "Точное следование инструкциям",
+            "Низкое потребление ресурсов"
+        ]
+    },
+    {
+        id: "claude3",
+        title: "Claude",
+        version: "3.5 Sonnet",
         icon: "fas fa-robot",
-        price: "от 8 000 ₽/мес",
-        description: "Виртуальный помощник с естественным языком общения для автоматизации рутинных задач и улучшения клиентского сервиса.",
+        badge: "premium",
+        description: "Продвинутая модель от Anthropic с улучшенными креативными способностями и глубоким пониманием контекста. Идеальна для сложных творческих задач.",
         features: [
-            "24/7 поддержка клиентов",
-            "Мультиязычность",
-            "Интеграция с мессенджерами",
-            "Анализ тональности диалогов"
+            "Улучшенная креативность",
+            "Глубокий анализ контекста",
+            "Работа с длинными документами",
+            "Этичное использование ИИ",
+            "Высокая точность ответов"
         ]
     },
     {
-        id: 3,
-        title: "AI Безопасность",
-        icon: "fas fa-shield-alt",
-        price: "от 25 000 ₽/мес",
-        description: "Система кибербезопасности на основе ИИ для обнаружения и предотвращения угроз в реальном времени.",
+        id: "mistral",
+        title: "Mistral",
+        version: "Large",
+        icon: "fas fa-wind",
+        badge: "free",
+        description: "Эффективная европейская модель с открытым исходным кодом. Отличается высокой скоростью работы и качественной обработкой текста.",
         features: [
-            "Обнаружение аномалий",
-            "Защита от DDoS-атак",
-            "Мониторинг в реальном времени",
-            "Автоматическое устранение угроз"
+            "Открытый исходный код",
+            "Высокая скорость обработки",
+            "Оптимизация для европейских языков",
+            "Качественный перевод",
+            "Гибкая настройка"
         ]
     },
     {
-        id: 4,
-        title: "AI Контент",
-        icon: "fas fa-pen-nib",
-        price: "от 5 000 ₽/мес",
-        description: "Генерация качественного текстового контента для сайтов, блогов и социальных сетей с учетом SEO-оптимизации.",
+        id: "llama3",
+        title: "Llama",
+        version: "3.1 70B",
+        icon: "fas fa-horse-head",
+        badge: "premium",
+        description: "Масштабируемая модель от Meta с улучшенными возможностями диалога и поддержкой многозадачности. Подходит для коммерческого использования.",
         features: [
-            "Генерация статей и постов",
-            "SEO-оптимизация",
-            "Копирайтинг на разные темы",
-            "Адаптация стиля под бренд"
+            "Многозадачность",
+            "Коммерческая лицензия",
+            "Поддержка плагинов",
+            "Интеграция с API",
+            "Регулярные обновления"
         ]
     },
     {
-        id: 5,
-        title: "AI Оптимизация",
-        icon: "fas fa-cogs",
-        price: "от 12 000 ₽/мес",
-        description: "Оптимизация бизнес-процессов с использованием искусственного интеллекта для повышения эффективности.",
+        id: "dalle3",
+        title: "DALL·E",
+        version: "3.0",
+        icon: "fas fa-palette",
+        badge: "new",
+        description: "Передовая модель генерации изображений от OpenAI. Создает высококачественные изображения по текстовым описаниям с пониманием контекста.",
         features: [
-            "Анализ рабочих процессов",
-            "Автоматизация рутинных задач",
-            "Рекомендации по оптимизации",
-            "Отслеживание KPI"
-        ]
-    },
-    {
-        id: 6,
-        title: "AI Видение",
-        icon: "fas fa-eye",
-        price: "от 18 000 ₽/мес",
-        description: "Система компьютерного зрения для анализа изображений и видео в реальном времени.",
-        features: [
-            "Распознавание объектов",
-            "Анализ видеопотоков",
-            "Контроль качества продукции",
-            "Безопасность на производстве"
+            "Генерация изображений 4K",
+            "Понимание сложных запросов",
+            "Разные стили искусства",
+            "Редактирование существующих изображений",
+            "Безопасный контент"
         ]
     }
 ];
 
-// Текущий активный продукт
-let activeProductId = null;
+// Текущая активная нейросеть
+let activeNeuralId = null;
+const BOT_USERNAME = "FernieXBot";
 
 // Инициализация при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-    renderProducts();
+    renderNeuralNetworks();
+    
+    // Добавляем обработчик для логотипа
+    const logo = document.querySelector('.logo');
+    logo.addEventListener('click', function() {
+        this.style.animation = 'pulse 0.5s';
+        setTimeout(() => {
+            this.style.animation = '';
+        }, 500);
+    });
+    
+    // Анимация для карточек при загрузке
+    setTimeout(() => {
+        document.querySelectorAll('.neural-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.1}s`;
+            card.classList.add('fade-in');
+        });
+    }, 300);
 });
 
-// Функция для отрисовки продуктов
-function renderProducts() {
-    const productsGrid = document.getElementById('productsGrid');
-    productsGrid.innerHTML = '';
+// Функция для отрисовки нейросетей
+function renderNeuralNetworks() {
+    const neuralGrid = document.getElementById('neuralGrid');
+    neuralGrid.innerHTML = '';
     
-    products.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.className = `product-card ${activeProductId === product.id ? 'active' : ''}`;
-        productCard.dataset.id = product.id;
+    neuralNetworks.forEach(neural => {
+        const neuralCard = document.createElement('div');
+        neuralCard.className = `neural-card ${activeNeuralId === neural.id ? 'active' : ''}`;
+        neuralCard.dataset.id = neural.id;
         
-        productCard.innerHTML = `
-            <div class="product-icon">
-                <i class="${product.icon}"></i>
+        // Получаем текст для бейджа
+        let badgeText = '';
+        let badgeClass = '';
+        switch(neural.badge) {
+            case 'free': 
+                badgeText = 'Бесплатно';
+                badgeClass = 'badge-free';
+                break;
+            case 'premium': 
+                badgeText = 'Премиум';
+                badgeClass = 'badge-premium';
+                break;
+            case 'new': 
+                badgeText = 'Новинка';
+                badgeClass = 'badge-new';
+                break;
+        }
+        
+        neuralCard.innerHTML = `
+            <div class="${badgeClass} neural-badge">${badgeText}</div>
+            <div class="neural-icon">
+                <i class="${neural.icon}"></i>
             </div>
-            <h3 class="product-title">${product.title}</h3>
-            <div class="product-price">${product.price}</div>
-            <div class="product-description">
-                <p>${product.description}</p>
-                <ul class="product-features">
-                    ${product.features.map(feature => `<li>${feature}</li>`).join('')}
+            <h3 class="neural-title">${neural.title}</h3>
+            <div class="neural-version">${neural.version}</div>
+            <div class="neural-description">
+                <p>${neural.description}</p>
+                <ul class="neural-features">
+                    ${neural.features.map(feature => `<li>${feature}</li>`).join('')}
                 </ul>
-                <button class="buy-button" onclick="handleBuyClick(${product.id})">
-                    <i class="fas fa-shopping-cart"></i> Заказать
-                </button>
+                <a href="https://t.me/${BOT_USERNAME}?start=${neural.id}" 
+                   class="install-button" 
+                   target="_blank"
+                   onclick="handleInstallClick('${neural.id}', event)">
+                    <i class="fab fa-telegram"></i> Установить ${neural.title}
+                </a>
             </div>
         `;
         
-        // Добавляем обработчик клика на карточку
-        productCard.addEventListener('click', function(e) {
-            // Если клик по кнопке "Заказать", не переключаем состояние
-            if (e.target.classList.contains('buy-button') || 
-                e.target.closest('.buy-button')) {
+        // Добавляем обработчик клика на карточку (кроме кнопки)
+        neuralCard.addEventListener('click', function(e) {
+            // Если клик по кнопке или ссылке, не переключаем состояние
+            if (e.target.closest('.install-button') || e.target.tagName === 'A') {
                 return;
             }
             
-            toggleProduct(product.id);
+            toggleNeural(neural.id);
         });
         
-        productsGrid.appendChild(productCard);
+        neuralGrid.appendChild(neuralCard);
     });
 }
 
-// Функция переключения состояния продукта
-function toggleProduct(productId) {
-    // Если кликаем на уже активный продукт - закрываем его
-    if (activeProductId === productId) {
-        activeProductId = null;
+// Функция переключения состояния нейросети
+function toggleNeural(neuralId) {
+    // Если кликаем на уже активную нейросеть - закрываем её
+    if (activeNeuralId === neuralId) {
+        activeNeuralId = null;
     } else {
-        activeProductId = productId;
+        activeNeuralId = neuralId;
     }
     
     // Обновляем отображение
-    renderProducts();
+    renderNeuralNetworks();
     
     // Плавная прокрутка к активному элементу, если он открыт
-    if (activeProductId) {
+    if (activeNeuralId) {
         setTimeout(() => {
-            const activeCard = document.querySelector(`.product-card[data-id="${activeProductId}"]`);
+            const activeCard = document.querySelector(`.neural-card[data-id="${activeNeuralId}"]`);
             if (activeCard) {
-                activeCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                activeCard.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center',
+                    inline: 'nearest' 
+                });
             }
         }, 100);
     }
 }
 
-// Обработчик клика на кнопку "Заказать"
-function handleBuyClick(productId) {
-    const product = products.find(p => p.id === productId);
+// Обработчик клика на кнопку "Установить"
+function handleInstallClick(neuralId, event) {
+    const neural = neuralNetworks.find(n => n.id === neuralId);
     
-    // Предотвращаем всплытие события, чтобы карточка не закрывалась
-    event.stopPropagation();
+    // Записываем в localStorage выбранную нейросеть
+    localStorage.setItem('selectedNeural', neuralId);
     
-    // Показываем сообщение о заказе
-    alert(`Спасибо за заказ "${product.title}"!\nНаш менеджер свяжется с вами в ближайшее время для уточнения деталей.`);
+    // Можно добавить аналитику здесь
+    console.log(`Пользователь выбрал нейросеть: ${neural.title} ${neural.version}`);
     
-    // В реальном приложении здесь был бы запрос на сервер
-    console.log(`Заказ продукта: ${product.title}`);
+    // Открывается Telegram с параметром start
+    // Telegram автоматически передаст параметр боту
 }
 
-// Добавляем интерактивность для логотипа
-document.addEventListener('DOMContentLoaded', function() {
-    const logo = document.querySelector('.logo');
+// Анимация для плавного появления
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
     
-    logo.addEventListener('mouseenter', function() {
-        this.style.transform = 'scale(1.05)';
-        this.style.transition = 'transform 0.3s ease';
-    });
+    .fade-in {
+        animation: fadeIn 0.5s ease-out forwards;
+        opacity: 0;
+    }
     
-    logo.addEventListener('mouseleave', function() {
-        this.style.transform = 'scale(1)';
-    });
-});
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+`;
+document.head.appendChild(style);
