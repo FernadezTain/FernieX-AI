@@ -16,6 +16,7 @@ body {
 
 /* ===== КАРТОЧКА ===== */
 .neural-card {
+    position: relative;
     background: rgba(255,255,255,0.06);
     border-radius: 18px;
     padding: 24px;
@@ -27,19 +28,16 @@ body {
         box-shadow .4s ease,
         background .4s ease;
 
+    opacity: 0;
+    transform: translateY(30px);
     animation: cardAppear .6s ease forwards;
     animation-delay: calc(var(--i) * .1s);
-    opacity: 0;
 }
 
 @keyframes cardAppear {
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-    from {
-        opacity: 0;
-        transform: translateY(30px);
     }
 }
 
@@ -48,16 +46,11 @@ body {
     box-shadow: 0 20px 40px rgba(0,201,255,.25);
 }
 
-/* ===== АКТИВ ===== */
+/* ===== АКТИВ (БЕЗ animation!) ===== */
 .neural-card.active {
     background: rgba(255,255,255,0.12);
     border-color: rgba(0,201,255,.5);
-    animation: activeFloat 6s ease-in-out infinite;
-}
-
-@keyframes activeFloat {
-    0%,100% { transform: translateY(-4px); }
-    50% { transform: translateY(-10px); }
+    transform: translateY(-6px);
 }
 
 /* ===== HEADER ===== */
@@ -89,17 +82,20 @@ body {
     color: #92fe9d;
 }
 
-/* ===== DESCRIPTION ===== */
+/* ===== DESCRIPTION (БЕЗ max-height!) ===== */
 .neural-description {
-    max-height: 0;
-    overflow: hidden;
+    display: grid;
+    grid-template-rows: 0fr;
     opacity: 0;
-    transition: all .5s ease;
-    margin-left: 90px;
+    transition: grid-template-rows .4s ease, opacity .3s ease;
+}
+
+.neural-description > div {
+    overflow: hidden;
 }
 
 .neural-card.active .neural-description {
-    max-height: 1000px;
+    grid-template-rows: 1fr;
     opacity: 1;
     margin-top: 20px;
 }
@@ -174,7 +170,7 @@ body {
     height: 120px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(0,201,255,.15), transparent);
-    animation: particleFloat linear infinite;
+    animation: particleFloat 25s linear infinite;
 }
 
 @keyframes particleFloat {
