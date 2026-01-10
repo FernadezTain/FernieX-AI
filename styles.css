@@ -95,10 +95,13 @@ header {
     left: 15%;
 }
 
+/* ИЗМЕНЕНИЕ: Один столбец вместо сетки */
 .neural-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .neural-card {
@@ -112,7 +115,7 @@ header {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    height: auto;
+    width: 100%;
 }
 
 .neural-card::before {
@@ -132,29 +135,42 @@ header {
 }
 
 .neural-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.1);
     box-shadow: 0 15px 30px rgba(0, 201, 255, 0.2);
     border-color: rgba(0, 201, 255, 0.3);
 }
 
 .neural-card.active {
-    grid-column: span 1;
     background: rgba(255, 255, 255, 0.12);
     box-shadow: 0 20px 40px rgba(0, 201, 255, 0.25);
     border-color: rgba(0, 201, 255, 0.5);
-    transform: scale(1.02);
+    transform: translateY(-5px) scale(1.01);
+}
+
+/* ИЗМЕНЕНИЕ: Располагаем иконку и текст в строку */
+.neural-card-header {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-bottom: 0;
+    transition: margin-bottom 0.3s ease;
+}
+
+.neural-card.active .neural-card-header {
+    margin-bottom: 25px;
 }
 
 .neural-badge {
     position: absolute;
-    top: 15px;
-    right: 15px;
-    padding: 5px 12px;
+    top: 20px;
+    right: 20px;
+    padding: 6px 15px;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.5px;
+    z-index: 2;
 }
 
 .badge-free {
@@ -173,71 +189,90 @@ header {
 }
 
 .neural-icon {
-    font-size: 3.2rem;
-    margin-bottom: 20px;
+    font-size: 2.8rem;
+    min-width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #00c9ff;
-    text-align: center;
+    background: rgba(0, 201, 255, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba(0, 201, 255, 0.2);
+}
+
+.neural-title-container {
+    flex-grow: 1;
 }
 
 .neural-title {
-    font-size: 1.7rem;
-    margin-bottom: 10px;
+    font-size: 1.8rem;
+    margin-bottom: 5px;
     color: #ffffff;
     font-weight: 700;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .neural-version {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #92fe9d;
-    margin-bottom: 15px;
-    text-align: center;
     font-weight: 500;
 }
 
 .neural-description {
-    font-size: 1rem;
+    font-size: 1.05rem;
     line-height: 1.7;
     color: #d1f7ff;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
     transition: all 0.5s ease;
-    flex-grow: 1;
+    padding-left: 95px; /* Отступ под иконку */
 }
 
 .neural-card.active .neural-description {
-    max-height: 500px;
+    max-height: 1000px;
     opacity: 1;
-    margin-top: 20px;
+    margin-top: 0;
 }
 
 .neural-features {
     list-style-type: none;
-    margin-top: 15px;
+    margin-top: 20px;
     padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
 }
 
 .neural-features li {
-    padding: 8px 0;
-    padding-left: 28px;
+    padding: 10px 0;
+    padding-left: 32px;
     position: relative;
     color: #b3e5fc;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
 }
 
 .neural-features li::before {
     content: '▸';
     position: absolute;
-    left: 10px;
+    left: 15px;
     color: #00c9ff;
     font-weight: bold;
+    font-size: 1.1rem;
 }
 
 .install-button {
-    display: block;
-    width: 100%;
-    padding: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 200px;
+    padding: 16px 30px;
     background: linear-gradient(to right, #00c9ff, #00a8ff);
     color: white;
     border: none;
@@ -249,7 +284,6 @@ header {
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(10px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
     text-align: center;
     text-decoration: none;
     box-shadow: 0 5px 15px rgba(0, 168, 255, 0.3);
@@ -268,6 +302,7 @@ header {
 
 .install-button i {
     margin-right: 10px;
+    font-size: 1.3rem;
 }
 
 .instructions {
@@ -276,6 +311,9 @@ header {
     padding: 30px;
     margin: 40px 0;
     border-left: 4px solid #00c9ff;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .instructions h3 {
@@ -311,6 +349,9 @@ header {
     padding: 20px;
     border-radius: 15px;
     border: 1px solid rgba(0, 136, 204, 0.3);
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .telegram-info i {
@@ -363,7 +404,7 @@ footer {
 /* Адаптивность */
 @media (max-width: 1100px) {
     .neural-grid {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        max-width: 800px;
     }
 }
 
@@ -384,10 +425,29 @@ footer {
         font-size: 1.8rem;
     }
     
-    .neural-grid {
+    .neural-card-header {
+        gap: 15px;
+    }
+    
+    .neural-icon {
+        font-size: 2.2rem;
+        min-width: 60px;
+        height: 60px;
+    }
+    
+    .neural-title {
+        font-size: 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .neural-description {
+        padding-left: 0;
+    }
+    
+    .neural-features {
         grid-template-columns: 1fr;
-        max-width: 500px;
-        margin: 0 auto;
     }
     
     .instructions {
@@ -418,12 +478,24 @@ footer {
         padding: 20px;
     }
     
+    .neural-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
     .neural-title {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
     
     .install-button {
+        width: 100%;
         padding: 14px;
         font-size: 1.1rem;
+    }
+    
+    .neural-badge {
+        top: 15px;
+        right: 15px;
     }
 }
