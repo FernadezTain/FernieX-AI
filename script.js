@@ -12,7 +12,8 @@ const neuralNetworks = [
             "Поддержка 50+ языков",
             "Расширенная математическая логика",
             "Генерация кода",
-            "Анализ документов и таблиц"
+            "Анализ документов и таблиц",
+            "Понимание сложных запросов"
         ]
     },
     {
@@ -27,7 +28,8 @@ const neuralNetworks = [
             "Быстрое время ответа",
             "Поддержка 40+ языков",
             "Точное следование инструкциям",
-            "Низкое потребление ресурсов"
+            "Низкое потребление ресурсов",
+            "Бесплатный доступ"
         ]
     },
     {
@@ -42,7 +44,8 @@ const neuralNetworks = [
             "Глубокий анализ контекста",
             "Работа с длинными документами",
             "Этичное использование ИИ",
-            "Высокая точность ответов"
+            "Высокая точность ответов",
+            "Безопасный диалог"
         ]
     },
     {
@@ -57,7 +60,8 @@ const neuralNetworks = [
             "Высокая скорость обработки",
             "Оптимизация для европейских языков",
             "Качественный перевод",
-            "Гибкая настройка"
+            "Гибкая настройка",
+            "Локальное развертывание"
         ]
     },
     {
@@ -72,7 +76,8 @@ const neuralNetworks = [
             "Коммерческая лицензия",
             "Поддержка плагинов",
             "Интеграция с API",
-            "Регулярные обновления"
+            "Регулярные обновления",
+            "Корпоративная поддержка"
         ]
     },
     {
@@ -87,7 +92,8 @@ const neuralNetworks = [
             "Понимание сложных запросов",
             "Разные стили искусства",
             "Редактирование существующих изображений",
-            "Безопасный контент"
+            "Безопасный контент",
+            "Высокое разрешение"
         ]
     }
 ];
@@ -116,6 +122,13 @@ document.addEventListener('DOMContentLoaded', function() {
             card.classList.add('fade-in');
         });
     }, 300);
+    
+    // Закрываем активную карточку при клике вне её
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.neural-card') && activeNeuralId) {
+            toggleNeural(activeNeuralId);
+        }
+    });
 });
 
 // Функция для отрисовки нейросетей
@@ -148,11 +161,17 @@ function renderNeuralNetworks() {
         
         neuralCard.innerHTML = `
             <div class="${badgeClass} neural-badge">${badgeText}</div>
-            <div class="neural-icon">
-                <i class="${neural.icon}"></i>
+            <div class="neural-card-header">
+                <div class="neural-icon">
+                    <i class="${neural.icon}"></i>
+                </div>
+                <div class="neural-title-container">
+                    <h3 class="neural-title">
+                        ${neural.title}
+                        <span class="neural-version">${neural.version}</span>
+                    </h3>
+                </div>
             </div>
-            <h3 class="neural-title">${neural.title}</h3>
-            <div class="neural-version">${neural.version}</div>
             <div class="neural-description">
                 <p>${neural.description}</p>
                 <ul class="neural-features">
@@ -162,7 +181,7 @@ function renderNeuralNetworks() {
                    class="install-button" 
                    target="_blank"
                    onclick="handleInstallClick('${neural.id}', event)">
-                    <i class="fab fa-telegram"></i> Установить ${neural.title}
+                    <i class="fab fa-telegram"></i> Установить ${neural.title} ${neural.version}
                 </a>
             </div>
         `;
@@ -170,7 +189,9 @@ function renderNeuralNetworks() {
         // Добавляем обработчик клика на карточку (кроме кнопки)
         neuralCard.addEventListener('click', function(e) {
             // Если клик по кнопке или ссылке, не переключаем состояние
-            if (e.target.closest('.install-button') || e.target.tagName === 'A') {
+            if (e.target.closest('.install-button') || 
+                e.target.closest('.neural-badge') ||
+                e.target.tagName === 'A') {
                 return;
             }
             
@@ -187,6 +208,13 @@ function toggleNeural(neuralId) {
     if (activeNeuralId === neuralId) {
         activeNeuralId = null;
     } else {
+        // Закрываем предыдущую, если была открыта
+        if (activeNeuralId) {
+            const prevCard = document.querySelector(`.neural-card[data-id="${activeNeuralId}"]`);
+            if (prevCard) {
+                prevCard.classList.remove('active');
+            }
+        }
         activeNeuralId = neuralId;
     }
     
@@ -200,11 +228,10 @@ function toggleNeural(neuralId) {
             if (activeCard) {
                 activeCard.scrollIntoView({ 
                     behavior: 'smooth', 
-                    block: 'center',
-                    inline: 'nearest' 
+                    block: 'center'
                 });
             }
-        }, 100);
+        }, 150);
     }
 }
 
@@ -214,12 +241,112 @@ function handleInstallClick(neuralId, event) {
     
     // Записываем в localStorage выбранную нейросеть
     localStorage.setItem('selectedNeural', neuralId);
+    localStorage.setItem('lastSelection', new Date().toISOString());
     
     // Можно добавить аналитику здесь
     console.log(`Пользователь выбрал нейросеть: ${neural.title} ${neural.version}`);
     
     // Открывается Telegram с параметром start
     // Telegram автоматически передаст параметр боту
+    
+    // Показываем уведомление
+    showInstallNotification(neural);
+}
+
+// Показать уведомление об установке
+function showInstallNotification(neural) {
+    // Создаем уведомление
+    const notification = document.createElement('div');
+    notification.className = 'install-notification';
+    notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fab fa-telegram"></i>
+            <div>
+                <h4>Открывается Telegram...</h4>
+                <p>Вы будете перенаправлены в бота для установки ${neural.title} ${neural.version}</p>
+            </div>
+        </div>
+    `;
+    
+    // Стили для уведомления
+    const style = document.createElement('style');
+    style.textContent = `
+        .install-notification {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(to right, #0088cc, #00c9ff);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            animation: slideIn 0.5s ease-out;
+            max-width: 350px;
+        }
+        
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .notification-content i {
+            font-size: 2rem;
+        }
+        
+        .notification-content h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+        
+        .notification-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    `;
+    
+    document.head.appendChild(style);
+    document.body.appendChild(notification);
+    
+    // Удаляем уведомление через 3 секунды
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.5s ease-out forwards';
+        
+        // Добавляем анимацию исчезновения
+        const slideOutStyle = document.createElement('style');
+        slideOutStyle.textContent = `
+            @keyframes slideOut {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(slideOutStyle);
+        
+        setTimeout(() => {
+            notification.remove();
+            slideOutStyle.remove();
+            style.remove();
+        }, 500);
+    }, 3000);
 }
 
 // Анимация для плавного появления
