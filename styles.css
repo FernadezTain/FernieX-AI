@@ -1,3 +1,4 @@
+/* ===== ОБЩИЕ СТИЛИ ===== */
 body {
     font-family: Raleway, sans-serif;
     background: linear-gradient(135deg, #0c1c24, #1a2c3a);
@@ -7,114 +8,149 @@ body {
 }
 
 .container {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: auto;
 }
 
-/* ===== GRID ===== */
+/* ===== АНИМАЦИИ ===== */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+header,
+.section-title,
+.instructions,
+footer {
+    animation: fadeUp .8s ease forwards;
+}
+
+header { animation-delay: .1s; }
+.section-title { animation-delay: .25s; }
+.instructions { animation-delay: .35s; }
+footer { animation-delay: .45s; }
+
+/* ===== ХЕДЕР ===== */
+header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.logo {
+    font-size: 3.2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg,#00c9ff,#92fe9d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+.tagline {
+    font-size: 1.25rem;
+    margin-top: 10px;
+    color: #ccefff;
+}
+
+.sub-tagline {
+    margin-top: 12px;
+    font-size: 1rem;
+    color: rgba(234,250,255,.75);
+}
+
+/* ===== СЕКЦИЯ НЕЙРОСЕТЕЙ ===== */
 .neural-grid {
+    max-width: 900px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
 
-/* ===== CARD ===== */
+/* ===== КАРТОЧКА ===== */
 .neural-card {
-    position: relative;
     background: rgba(255,255,255,0.06);
     border-radius: 18px;
     padding: 24px;
     border: 1px solid rgba(0,201,255,0.15);
     cursor: pointer;
-
+    transition: transform .4s ease, box-shadow .4s ease, background .4s ease;
+    animation: fadeUp .6s ease forwards;
     opacity: 0;
-    transform: translateY(30px);
-
-    animation: cardAppear .6s ease forwards;
-    animation-delay: calc(var(--i) * .1s);
-
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease,
-        background .35s ease;
-}
-
-@keyframes cardAppear {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .neural-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 18px 40px rgba(0,201,255,.25);
+    box-shadow: 0 20px 40px rgba(0,201,255,.25);
 }
 
-/* ===== ACTIVE (БЕЗ animation!) ===== */
 .neural-card.active {
     background: rgba(255,255,255,0.12);
-    border-color: rgba(0,201,255,.45);
-    transform: translateY(-6px);
+    border-color: rgba(0,201,255,.5);
+    animation: activeFloat 6s ease-in-out infinite;
 }
 
-/* ===== HEADER ===== */
+@keyframes activeFloat {
+    0%,100% { transform: translateY(-4px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ===== HEADER КАРТОЧКИ ===== */
 .neural-card-header {
     display: flex;
-    align-items: center;
     gap: 20px;
+    align-items: center;
 }
 
 .neural-icon {
-    width: 64px;
-    height: 64px;
+    width: 70px;
+    height: 70px;
     border-radius: 14px;
     background: rgba(0,201,255,.12);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     color: #00c9ff;
 }
 
 .neural-title {
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
 }
 
 .neural-title span {
-    font-size: 1.05rem;
+    font-size: 1.1rem;
     color: #92fe9d;
 }
 
-/* ===== DESCRIPTION (СТАБИЛЬНО) ===== */
+/* ===== ОПИСАНИЕ ===== */
 .neural-description {
     display: grid;
     grid-template-rows: 0fr;
     opacity: 0;
-    transition: grid-template-rows .35s ease, opacity .25s ease;
+    transition: grid-template-rows .4s ease, opacity .3s ease;
 }
 
-.neural-description > div {
+.neural-description > * {
     overflow: hidden;
 }
 
 .neural-card.active .neural-description {
     grid-template-rows: 1fr;
     opacity: 1;
-    margin-top: 18px;
+    margin-top: 20px;
 }
 
-/* ===== FEATURES ===== */
+/* ===== ФИЧИ ===== */
 .neural-features {
     list-style: none;
     padding: 0;
-    margin: 16px 0;
+    margin: 20px 0;
 }
 
 .neural-features li {
+    padding-left: 24px;
     position: relative;
-    padding-left: 22px;
 }
 
 .neural-features li::before {
@@ -124,31 +160,31 @@ body {
     color: #00c9ff;
 }
 
-/* ===== BUTTON ===== */
+/* ===== КНОПКА ===== */
 .install-button {
     display: inline-flex;
-    align-items: center;
     gap: 10px;
+    align-items: center;
     padding: 14px 26px;
     border-radius: 12px;
     background: linear-gradient(90deg,#00c9ff,#00a8ff);
-    color: #fff;
+    color: white;
     text-decoration: none;
     font-weight: 700;
-
-    transition: transform .25s ease, box-shadow .25s ease;
+    transition: transform .3s ease, box-shadow .3s ease;
+    animation: pulseGlow 3.5s ease-in-out infinite;
 }
 
 .install-button:hover {
     transform: scale(1.06);
-    box-shadow: 0 10px 28px rgba(0,168,255,.5);
+    box-shadow: 0 10px 30px rgba(0,168,255,.5);
 }
 
-/* ===== BADGE ===== */
+/* ===== БАДЖ ===== */
 .neural-badge {
     position: absolute;
-    top: 18px;
-    right: 18px;
+    top: 20px;
+    right: 20px;
     padding: 6px 14px;
     border-radius: 20px;
     font-size: .85rem;
@@ -160,4 +196,117 @@ body {
 
 .badge-premium {
     background: linear-gradient(90deg,#ff8a00,#da1b60);
+}
+
+/* ===== ЧАСТИЦЫ ===== */
+.particles {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,201,255,.15), transparent);
+    animation: particleFloat linear infinite;
+}
+
+@keyframes particleFloat {
+    from { transform: translateY(110vh); }
+    to { transform: translateY(-150px); }
+}
+
+@keyframes pulseGlow {
+    0%,100% { box-shadow: 0 0 0 rgba(0,201,255,0); }
+    50% { box-shadow: 0 0 20px rgba(0,201,255,.25); }
+}
+
+/* ===== СЕКЦИЯ “КАК ПОЛУЧИТЬ ДОСТУП” ===== */
+.instructions {
+    margin: 70px auto;
+    padding: 30px 34px;
+    max-width: 850px;
+    border-radius: 22px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(0,201,255,0.2);
+    backdrop-filter: blur(12px);
+}
+
+.instructions h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.instructions h3 i {
+    color: #00c9ff;
+}
+
+.instructions ol {
+    margin-top: 18px;
+    padding-left: 20px;
+}
+
+.instructions li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    margin-top: 80px;
+    opacity: .9;
+}
+
+.telegram-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.telegram-info i {
+    font-size: 1.6rem;
+    color: #00c9ff;
+}
+
+footer a {
+    color: #00c9ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+.contact-info {
+    margin-top: 8px;
+    font-size: .95rem;
+    opacity: .85;
+}
+
+/* ===== СЕКЦИЯ ЗАГОЛОВКА ===== */
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg,#00c9ff,#92fe9d);
+    margin: 12px auto 0;
+    border-radius: 3px;
 }
