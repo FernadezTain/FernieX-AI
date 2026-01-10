@@ -73,9 +73,21 @@ header {
     padding: 24px;
     border: 1px solid rgba(0,201,255,0.15);
     cursor: pointer;
-    transition: transform .4s ease, box-shadow .4s ease, background .4s ease;
-    animation: fadeUp .6s ease forwards;
-    opacity: 0;
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        background .3s ease,
+        max-height .4s ease,
+        opacity .4s ease;
+    max-height: 150px; /* базовая высота карточки */
+    overflow: hidden;
+    position: relative;
+}
+
+.neural-card.active {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(0,201,255,.5);
+    max-height: 600px; /* увеличиваем чтобы показать описание */
 }
 
 .neural-card:hover {
@@ -83,11 +95,6 @@ header {
     box-shadow: 0 20px 40px rgba(0,201,255,.25);
 }
 
-.neural-card.active {
-    background: rgba(255,255,255,0.12);
-    border-color: rgba(0,201,255,.5);
-    animation: activeFloat 6s ease-in-out infinite;
-}
 
 @keyframes activeFloat {
     0%,100% { transform: translateY(-4px); }
@@ -131,15 +138,18 @@ header {
     transition: grid-template-rows .4s ease, opacity .3s ease;
 }
 
-.neural-description > * {
-    overflow: hidden;
+.neural-description {
+    opacity: 0;
+    max-height: 0;
+    transition: opacity .3s ease, max-height .4s ease;
 }
 
 .neural-card.active .neural-description {
-    grid-template-rows: 1fr;
     opacity: 1;
+    max-height: 500px; /* достаточно чтобы показать весь текст */
     margin-top: 20px;
 }
+
 
 /* ===== ФИЧИ ===== */
 .neural-features {
