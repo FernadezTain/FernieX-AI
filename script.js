@@ -73,9 +73,10 @@ neuralNetworks.forEach((n, i) => {
                     ${n.features.map(f => `<li>${f}</li>`).join("")}
                 </ul>
 
-                <a href="https://t.me/FernieXBot?start=AISelected_${n.id}" target="_blank" class="install-button">
-                    <i class="fab fa-telegram"></i> Установить
-                </a>
+<a href="https://t.me/FernieXBot?start=select_AI_${n.id}" target="_blank" class="install-button">
+    <i class="fab fa-telegram"></i> Установить
+</a>
+
             </div>
         </div>
     `;
