@@ -5,7 +5,7 @@ const neuralNetworks = [
         version: "4.1 fast",
         icon: "fas fa-brain",
         badge: "premium",
-        description: "Мощная аналитическая нейросеть нового поколения.",
+        description: "Мощная аналитическая нейросеть с минимальным количеством ограничений",
         features: [
     "2 млн. токенов контекст",
     "Сверхбыстрый отклик",
