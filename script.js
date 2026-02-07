@@ -15,8 +15,8 @@ const neuralNetworks = [
     },
     {
         id: "grok41fast",
-        title: "Grok",
-        version: "4.1 fast",
+        title: "Solar",
+        version: "Pro 3",
         icon: "fas fa-brain",
         badge: "premium",
         description: "Мощная аналитическая нейросеть с минимальным количеством ограничений.",
@@ -31,8 +31,8 @@ const neuralNetworks = [
     },
     {
         id: "ClaudeOpus_45",
-        title: "Claude Opus",
-        version: "4.5",
+        title: "Mistral",
+        version: "Small 3.1 24B",
         icon: "fas fa-cloud",
         badge: "premium",
         description: "Мощная аналитическая нейросеть.",
