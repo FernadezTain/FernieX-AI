@@ -15,8 +15,8 @@ const neuralNetworks = [
     },
 {
     id: "grok41fast",
-    title: "Solar Pro 3",
-    version: "Free",
+    title: "Solar",
+    version: "Pro 3",
     icon: "fas fa-sun",
     badge: "free", 
     description: "Мощная языковая модель с поддержкой огромного контекста, разработанная для эффективной генерации текста и глубокого анализа.",
