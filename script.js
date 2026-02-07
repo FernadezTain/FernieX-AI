@@ -4,7 +4,7 @@ const neuralNetworks = [
     title: "Step",
     version: "3.5 Flash",
     icon: "fas fa-bolt",
-    badge: "free",
+    badge: "premium",
     description: "Быстрая и лёгкая модель для стабильной генерации текстов и повседневных задач.",
     features: [
         "Контекст ~8–10 тыс. токенов",
