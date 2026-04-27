@@ -5,30 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FernieX-AI | Доступ к нейросетям</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧠</text></svg>">
 </head>
 <body>
+    <!-- Фоновая текстура-сетка -->
+    <div class="grid-texture"></div>
+
+    <!-- Частицы -->
+    <div class="particles" id="particles"></div>
+
     <div class="container">
         <header>
-            <h1 class="logo">FernieX-AI</h1>
+            <div class="logo-wrap">
+                <div class="logo-glow"></div>
+                <h1 class="logo">FernieX-AI</h1>
+            </div>
             <p class="tagline">Доступ к мощнейшим нейросетям через Telegram</p>
-            <p class="sub-tagline">Выберите нейросеть, нажмите "Установить" и получите доступ в нашем боте</p>
+            <p class="sub-tagline">Выберите нейросеть, нажмите «Установить» и получите доступ в нашем боте</p>
+            <div class="header-divider"></div>
         </header>
 
         <section class="neural-section">
             <h2 class="section-title">Доступные нейросети</h2>
             <div class="neural-grid" id="neuralGrid">
-                <!-- Нейросети будут добавлены через JavaScript -->
+                <!-- Нейросети добавляются через JavaScript -->
             </div>
         </section>
 
         <div class="instructions">
             <h3><i class="fas fa-info-circle"></i> Как получить доступ?</h3>
             <ol>
-                <li>Выберите нейросеть из списка ниже</li>
-                <li>Нажмите "Установить" на выбранной нейросети</li>
+                <li>Выберите нейросеть из списка выше</li>
+                <li>Нажмите «Установить» на выбранной нейросети</li>
                 <li>Вы будете перенаправлены в Telegram бота @FernieXBot</li>
                 <li>Бот автоматически определит ваш выбор и предоставит доступ</li>
                 <li>Наслаждайтесь работой с нейросетью прямо в Telegram!</li>
@@ -46,5 +56,24 @@
     </div>
 
     <script src="script.js"></script>
+
+    <!-- Генерация частиц -->
+    <script>
+        const container = document.getElementById('particles');
+        for (let i = 0; i < 18; i++) {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = Math.random() * 100 + 60;
+            p.style.cssText = `
+                width: ${size}px;
+                height: ${size}px;
+                left: ${Math.random() * 100}%;
+                animation-duration: ${Math.random() * 20 + 15}s;
+                animation-delay: ${Math.random() * -25}s;
+                opacity: ${Math.random() * 0.4 + 0.1};
+            `;
+            container.appendChild(p);
+        }
+    </script>
 </body>
 </html>
