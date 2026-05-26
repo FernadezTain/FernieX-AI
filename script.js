@@ -43,13 +43,13 @@ const neuralNetworks = [
     },
     {
         id: "codestral",
-        title: "Codestral",
-        version: "Latest",
+        title: "Aurin",
+        version: "Fine-Tune v.1",
         icon: "fas fa-code",
-        badge: "premium",
-        description: "Специализированная модель Mistral для написания, анализа и отладки кода.",
+        badge: "free",
+        description: "Fine-Tune модель на базе Mistral Large с кастомными настройками и доработками.",
         features: [
-            "Контекст до 256 000 токенов",
+            "Контекст до 128 000 токенов",
             "Поддержка 80+ языков программирования",
             "Оптимизирована для генерации и объяснения кода",
             "Подходит для отладки, рефакторинга и code review"
