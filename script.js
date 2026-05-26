@@ -42,7 +42,7 @@ const neuralNetworks = [
         ]
     },
     {
-        id: "codestral",
+        id: "Aurin",
         title: "Aurin",
         version: "Fine-Tune v.1",
         icon: "fas fa-code",
