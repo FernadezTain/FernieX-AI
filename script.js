@@ -1,6 +1,6 @@
 const neuralNetworks = [
     {
-        id: "mistral-large",
+        id: "Aurin-pro",
         title: "Aurin",
         version: "Pro",
         icon: "fas fa-brain",
@@ -14,7 +14,7 @@ const neuralNetworks = [
         ]
     },
     {
-        id: "aurin-lite",
+        id: "Aurin-lite",
         title: "Aurin",
         version: "Lite",
         icon: "fas fa-bolt",
@@ -28,7 +28,7 @@ const neuralNetworks = [
         ]
     },
     {
-        id: "mistral-medium",
+        id: "Aurin-medium",
         title: "Aurin",
         version: "Medium",
         icon: "fas fa-fish",
