@@ -1,11 +1,11 @@
 const neuralNetworks = [
     {
         id: "mistral-large",
-        title: "Mistral",
-        version: "Large",
+        title: "Aurin",
+        version: "Pro",
         icon: "fas fa-brain",
         badge: "premium",
-        description: "Флагманская модель Mistral AI для сложных задач, глубокого анализа и развёрнутых ответов.",
+        description: "Флагманская модель FernieX-AI для сложных задач, глубокого анализа и развёрнутых ответов.",
         features: [
             "Контекст до 128 000 токенов",
             "Поддержка множества языков, включая русский",
@@ -14,9 +14,9 @@ const neuralNetworks = [
         ]
     },
     {
-        id: "mistral-small",
-        title: "Mistral",
-        version: "Small",
+        id: "aurin-lite",
+        title: "Aurin",
+        version: "Lite",
         icon: "fas fa-bolt",
         badge: "free",
         description: "Быстрая и эффективная модель для повседневных задач и быстрых ответов.",
@@ -28,15 +28,14 @@ const neuralNetworks = [
         ]
     },
     {
-        id: "mistral-nemo",
-        title: "Mistral",
-        version: "Nemo",
+        id: "mistral-medium",
+        title: "Aurin",
+        version: "Medium",
         icon: "fas fa-fish",
         badge: "free",
-        description: "Компактная open-source модель от Mistral и NVIDIA, лёгкая в использовании.",
+        description: "Компактная модель от FernieX-AI, более точная в сравнении с Lite.",
         features: [
             "Контекст до 128 000 токенов",
-            "Разработана совместно с NVIDIA",
             "Хороший баланс между скоростью и качеством",
             "Подходит для повседневного общения и задач"
         ]
